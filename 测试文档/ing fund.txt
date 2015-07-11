@@ -1,0 +1,58 @@
+create table T_TRADING_ACCOUNTS
+(
+   ID                   varchar(64) NOT NULL,
+   TRADE_ID             varchar(64) comment '账务交易对象',
+   TRADE_TYPE           varchar(64) comment '账务交易类型',
+   TRADE_DIRECTION      varchar(64) comment '账务交易方向',
+   TRADE_AMOUNT         float comment '交易金额',
+   PAYEE_NAME           varchar(100) comment '收款人名称',
+   PAYEE_TYPE           varchar(64) comment '收款人类型',
+   TRADE_STATUS         VARCHAR(64) COMMENT '账务状态', 	'0','待审核'	'1','审核通过',	'2','审核拒绝' '3','发票已开'
+   CREATE_BY            VARCHAR(64) COMMENT '创建者',
+   CREATE_DATE          DATETIME COMMENT '创建时间',
+   UPDATE_BY            VARCHAR(64) COMMENT '更新者',
+   UPDATE_DATE          TIMESTAMP COMMENT '更新时间',
+   REMARKS              VARCHAR(255) COMMENT '备注信息',
+   DEL_FLAG             CHAR(1) DEFAULT '0' NOT NULL COMMENT '删除标记',
+   primary key (ID)
+) comment = '账务交易';
+
+create table T_PAYMENT_TRANS
+(
+   ID                   varchar(64) NOT NULL,
+   TRADE_TYPE           varchar(64) comment '交易类型',
+   PAYMENT_TYPE         varchar(64) comment '款项类型',
+   TRANS_ID             varchar(64) comment '交易对象',
+   TRADE_DIRECTION      varchar(64) comment '交易款项方向',
+   START_DATE           date comment '交易款项开始时间',
+   EXPIRED_DATE         date comment '交易款项到期时间',
+   TRADE_AMOUNT         float comment '应该交易金额',
+   TRANS_AMOUNT         float comment '实际交易金额',
+   LAST_AMOUNT          float comment '剩余交易金额',
+   TRANS_STATUS         VARCHAR(64) COMMENT '交易款项状态',	1','部分到账登记' 2','完全到账登记 0','未到账登记
+   CREATE_BY            VARCHAR(64) COMMENT '创建者',
+   CREATE_DATE          DATETIME COMMENT '创建时间',
+   UPDATE_BY            VARCHAR(64) COMMENT '更新者',
+   UPDATE_DATE          TIMESTAMP COMMENT '更新时间',
+   REMARKS              VARCHAR(255) COMMENT '备注信息',
+   DEL_FLAG             CHAR(1) DEFAULT '0' NOT NULL COMMENT '删除标记',
+   primary key (ID)
+) comment = '款项交易';
+
+交易类型
+'0','承租合同',
+'1','预约定金'
+,'2','定金转违约',
+,'3','新签合同'
+'4','正常人工续签
+'5','逾期自动续签',
+,'6','提前退租'
+,'7','正常退租'
+'8','逾期退租'
+'9','特殊退租'
+
+账务状态：
+'0','待审核','
+'1','审核通过'
+,'2','审核拒绝'
+'3','发票已开',
