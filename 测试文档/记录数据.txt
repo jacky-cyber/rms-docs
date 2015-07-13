@@ -1,3 +1,9 @@
+PaymentTrans 		款项
+PaymentTrade 		款项、账务关联
+TradingAccounts		账务
+Invoice				发票
+Receipt				收据
+
 create table T_TRADING_ACCOUNTS
 (
    ID                   varchar(64) NOT NULL,
@@ -39,7 +45,7 @@ create table T_PAYMENT_TRANS
    primary key (ID)
 ) comment = '款项交易';
 
-交易类型
+交易类型:
 '0','承租合同',
 '1','预约定金'
 ,'2','定金转违约',
@@ -55,4 +61,17 @@ create table T_PAYMENT_TRANS
 '0','待审核','
 '1','审核通过'
 ,'2','审核拒绝'
-'3','发票已开',
+'3','发票已开'
+
+出租合同审核状态
+0','暂存'
+'1','录入完成到账收据待登记'
+'2','到账收据完成合同内容待审核'
+'3','内容审核拒绝'
+4','内容审核通过到账收据待审核
+'5','到账收据审核拒绝
+'6','到账收据审核通过'
+
+'0','新签',
+'1','正常续签'
+'2','逾租续签'
