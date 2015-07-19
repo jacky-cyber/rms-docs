@@ -1,0 +1,18 @@
+充值，读电表读数和剩余电量，是否充值成功
+
+（1）充值：http://ip:6200/tc_pay/pay.action?addr=123&pay_value=200
+   	1）addr(String) 电表表号
+	2）pay_value（Integer） 充值金额  注：不能为小数
+	3）返回一个Long类型的id ，id作为查询充值是否成功的标示，返回0=我们系统找不到该表号
+
+（2）读剩余电量 http://ip:6200/tc_pay/read_remain_val.action?addr=123
+	1）addr(String) 电表表号
+	2）返回"日期,剩余电量"
+
+（3）电表读数 http://ip:6200/tc_pay/read_val.action?addr=123
+	1）addr(String) 电表表号
+	2）返回"日期,电表读数"
+	
+（4）读取是否充值成功  http://ip:6200/tc_pay/read_result.action?set_id=123232
+	1）set_id =充值时返回的Long类型的id
+	2）返回：0=未执行，1=成功，2=失败，3=找不到该信息
